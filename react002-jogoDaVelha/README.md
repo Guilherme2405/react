@@ -1,69 +1,51 @@
-# React + TypeScript + Vite
+# 🎮 Jogo da Velha Tecnológico com React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Acabei de finalizar um projeto pessoal: um **Jogo da Velha (Tic-Tac-Toe)** feito com **React + TypeScript** e um visual totalmente customizado com **CSS Vanilla**!
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tecnologias Utilizadas
 
-## Expanding the ESLint configuration
+<div style="display: flex; gap: 10px; align-items: center;">
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="30" alt="React" title="React"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="30" alt="TypeScript" title="TypeScript"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vite/vite-original.svg" width="30" alt="Vite" title="Vite"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="30" alt="Git" title="Git"/>
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+</div>
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- ⚛️ **React** com TypeScript para componentes funcionais
+- ⚡ **Vite** para build e hot reload super rápido
+- 🎨 **CSS Vanilla** para estilização moderna, sem frameworks
+- 🔤 **Google Fonts**: [Share Tech](https://fonts.google.com/specimen/Share+Tech)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🎨 Destaques do Design
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- 🌑 Tema escuro predominante com gradientes em **roxo e verde neon**
+- 🟩 Células com borda suave e **glow interno**
+- ✨ Transições suaves e **efeitos de sombra translúcida**
+- 🔠 Fonte futurista e texto em **uppercase**
+- 🔁 Botão de reset com **gradiente animado** e sombra esverdeada
+- ❌⭕ Letras grandes, neon e com **efeito glow**
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 💡 O que Aprendi
+
+- 🧠 Criar interfaces modernas com **CSS puro**
+- 🔁 Trabalhar com **estado no React** (useState, props)
+- ♿ Adicionar **acessibilidade e responsividade** em interfaces interativas
+
+---
+
+
+## 🔗 Repositório
+
+O código está disponível no GitHub:  
+👉 https://github.com/Guilherme2405/react
+
+---
+
