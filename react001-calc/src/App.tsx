@@ -10,7 +10,7 @@ import styles from './styles.module.scss'
 function App() {
 
   return (
-    <main className='vw-100 vh-100' style={{ backgroundColor: 'var(--bg-main-color)' }}>
+    <main className='vw-100 vh-100' style={{ backgroundColor: '#807ECE' }}>
       <div className='container'>
         <h1 className={styles.title}>calculadora</h1>
         <Calculator />
