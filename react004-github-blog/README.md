@@ -13,14 +13,10 @@ O **GitHub Blog** é uma aplicação web moderna que consome a API pública do G
 
 ## ✨ Funcionalidades
 
-- 📊 **Dashboard de repositórios** com informações detalhadas
 - 🔍 **Busca instantânea** por nome e descrição
-- 🔗 **URLs compartilháveis** (SEO-friendly)
-- 📄 **Paginação** de 10 itens por página
+- 🔗 **URLs compartilháveis**
 - 🌙 **Tema claro/escuro**
 - 📱 **Design totalmente responsivo**
-- ⚡ **Cache inteligente** para melhor performance
-- 🎯 **Loading states** personalizados
 
 ## 🛠️ Tecnologias
 
@@ -95,17 +91,9 @@ npm run lint     # Executa o linting do código
 
 ## 🎯 Funcionalidades Técnicas
 
-### Performance
-
-- ⚡ **Cache inteligente** com React Query (30min para dados estáticos)
-- 🔄 **Debounce** na busca (300ms)
-- 📦 **Code splitting** por rotas
-- 🧠 **Memoização** com useMemo/useCallback
-
 ### UX/UI
 
 - 🌐 **URLs semânticas** com searchParams
-- 📱 **Mobile-first** design
 - 🎨 **Micro-interações** e hover effects
 - 📜 **Scrollbars** customizadas
 
@@ -141,14 +129,6 @@ O projeto utiliza os seguintes endpoints da API do GitHub:
 - **Sem autenticação**: 60 requisições/hora
 - **Com token**: 5.000 requisições/hora
 
-## 🔮 Próximas Funcionalidades
-
-- [ ] 🔐 Autenticação OAuth GitHub
-- [ ] 📊 Analytics detalhados de repositórios
-- [ ] 🔍 Busca global entre repositórios
-- [ ] 📱 Progressive Web App (PWA)
-- [ ] 🌍 Internacionalização (i18n)
-
 ## 🤝 Contribuindo
 
 1. Faça um fork do projeto
@@ -158,8 +138,6 @@ O projeto utiliza os seguintes endpoints da API do GitHub:
 5. Abra um Pull Request
 
 ## 📝 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ## 👨‍💻 Autor
 
