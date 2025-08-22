@@ -6,7 +6,7 @@ import { Home } from "./app/pages/home";
 export function Router() {
   return (
     <BrowserRouter>
-    <Header />
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
