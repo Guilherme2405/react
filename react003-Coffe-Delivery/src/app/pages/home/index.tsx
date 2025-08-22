@@ -9,7 +9,7 @@ export function Home() {
   return (
     <div className="w-full h-auto flex flex-col items-center justify-start md:px-5 px-3 md:pt-8 pt-10">
       <div className="w-full max-w-[1440px] h-136 flex flex-col items-center justify-start gap-14">
-        <div className="w-full flex flex-col gap-16">
+        <div className="w-full flex flex-col gap-16 sm:px-5 px-3">
           <div className="w-full flex flex-row flex-wrap justify-between gap-14">
             <div className="w-auto flex flex-col justify-between gap-10 ">
               <div className="w-full xl:max-w-[700px] flex flex-col gap-10">
