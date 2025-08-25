@@ -13,7 +13,7 @@ import { ButtonRemoveItemCart } from "../../../components/ButtonRemoveItemCart";
 import { RadioCards } from "@radix-ui/themes";
 
 export function Checkout() {
-  const [, setSelectedPaymentMethod] = useState("credit-card");
+  const [, setSelectedPaymentMethod] = useState<string>("credit-card");
   return (
     <div>
       <div className="w-full h-auto flex flex-col items-center justify-start md:px-5 px-0 md:pt-8 pt-10">

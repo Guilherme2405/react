@@ -3,7 +3,9 @@ import { Coffee, Package, ShoppingCart, Timer } from "@phosphor-icons/react";
 import { ButtonAddItem } from "../../../components/ButtonAddItem";
 
 import Imagem from "../../../assets/Imagem.svg?react";
-import Coffee1 from "../../../assets/Coffee-1.svg?react";
+
+
+import { drinks } from "./template";
 
 export function Home() {
   return (
@@ -74,7 +76,7 @@ export function Home() {
             </div>
           </div>
 
-          <div className="w-full max-w-[1420px] h-136 flex flex-col gap-4">
+          <div className="w-full max-w-[1420px] h-136 flex flex-col gap-10">
             <div className="w-full h-auto flex flex-row justify-center items-center gap-2">
               <h2 className="text-1xl font-[nunito] font-extrabold text-gray-900">
                 Nossos cafés
@@ -82,51 +84,43 @@ export function Home() {
             </div>
 
             <div className="w-full h-full flex flex-col gap-4 pb-10">
-              <div className="flex flex-row flex-wrap justify-center items-center gap-4">
-                <div className="relative w-64 h-auto flex flex-col items-center justify-end bg-gray-100 rounded-tr-4xl rounded-bl-4xl px-6 pb-5 ">
-                  <div className="absolute top-[-25px]">
-                    <Coffee1 />
-                  </div>
+              <div className="flex flex-row flex-wrap justify-center items-center gap-10">
 
-                  <div className="w-full h-30" />
+                {drinks.map((drink) => (
 
-                  <div className="w-full flex flex-col items-center justify-center gap-7">
-                    <div className="w-full flex flex-col items-center justify-center gap-4">
-                      <div className="w-full flex flex-row flex-wrap items-center justify-center gap-1">
-                        <div className="w-min py-1 px-2 bg-yellow-100 rounded-full leading-none">
-                          <span className="w-auto text-sm font-bold text-yellow-600">
-                            especial
-                          </span>
-                        </div>
-                        <div className="w-min py-1 px-2 bg-yellow-100 rounded-full leading-none">
-                          <span className="w-auto text-sm font-bold text-yellow-600">
-                            TRADICIONAL
-                          </span>
-                        </div>
-                        <div className="w-min py-1 px-2 bg-yellow-100 rounded-full leading-none">
-                          <span className="w-auto text-sm font-bold text-yellow-600">
-                            ALCOÓLICO
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className="w-full flex flex-col items-center justify-center gap-2">
-                        <h3 className="text-xl font-[nunito] font-extrabold text-gray-900">
-                          Expresso Tradicional
-                        </h3>
-
-                        <span className="w-50 text-sm font-[nunito] text-gray-400">
-                          O tradicional café feito com água quente e grãos
-                          moídos
-                        </span>
-                      </div>
+                 <div className="relative w-64 h-[372px] flex flex-col items-center justify-end bg-gray-100 rounded-tr-4xl rounded-bl-4xl px-6 pb-5" key={drink.id}>
+                    <div className="absolute top-[-25px]">
+                       <drink.image width={120} height={120} />
                     </div>
+
+                    <div className="w-full h-30" />
+                    <div className="w-full flex flex-col items-center justify-center gap-7">
+                      <div className="w-full flex flex-row-reverse flex-wrap items-center justify-center gap-4">
+                        
+                        {drink.tags.map((tag) => (
+                          <div className="w-min py-1 px-2 bg-yellow-100 rounded-full leading-none">
+                            <span className="w-auto text-sm font-bold text-yellow-600 whitespace-nowrap">
+                              {tag}
+                            </span>
+                          </div>
+                        ))}
+
+                        <div className="w-full flex flex-col items-center justify-center gap-2">
+                          <h3 className="text-xl font-[nunito] font-extrabold text-gray-900">
+                            {drink.name}
+                          </h3>
+
+                          <span className="w-50 text-sm font-[nunito] text-gray-400">
+                            {drink.description}
+                          </span>
+                        </div>
+                      </div>
                     <div>
                       <div className="w-auto flex flex-row items-center justify-center gap-2">
                         <div>
-                          <span>R$</span>
+                            <span className="text-sm font-[nunito] text-gray-500">R$ {" "}</span>
                           <span className="text-2xl font-[nunito] font-extrabold text-[#574F4D]">
-                            9,90
+                            {drink.price.toFixed(2).replace(".", ",")}
                           </span>
                         </div>
 
@@ -145,132 +139,8 @@ export function Home() {
                     </div>
                   </div>
                 </div>
-
-                <div className="relative w-64 h-auto flex flex-col items-center justify-end bg-gray-100 rounded-tr-4xl rounded-bl-4xl px-6 pb-5 ">
-                  <div className="absolute top-[-25px]">
-                    <Coffee1 />
-                  </div>
-
-                  <div className="w-full h-30" />
-
-                  <div className="w-full flex flex-col items-center justify-center gap-7">
-                    <div className="w-full flex flex-col items-center justify-center gap-4">
-                      <div className="w-full flex flex-row flex-wrap items-center justify-center gap-1">
-                        <div className="w-min py-1 px-2 bg-yellow-100 rounded-full leading-none">
-                          <span className="w-auto text-sm font-bold text-yellow-600">
-                            especial
-                          </span>
-                        </div>
-                        <div className="w-min py-1 px-2 bg-yellow-100 rounded-full leading-none">
-                          <span className="w-auto text-sm font-bold text-yellow-600">
-                            TRADICIONAL
-                          </span>
-                        </div>
-                        <div className="w-min py-1 px-2 bg-yellow-100 rounded-full leading-none">
-                          <span className="w-auto text-sm font-bold text-yellow-600">
-                            ALCOÓLICO
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className="w-full flex flex-col items-center justify-center gap-2">
-                        <h3 className="text-xl font-[nunito] font-extrabold text-gray-900">
-                          Expresso Tradicional
-                        </h3>
-
-                        <span className="w-50 text-sm font-[nunito] text-gray-400">
-                          O tradicional café feito com água quente e grãos
-                          moídos
-                        </span>
-                      </div>
-                    </div>
-                    <div>
-                      <div className="w-auto flex flex-row items-center justify-center gap-2">
-                        <div>
-                          <span>R$</span>
-                          <span className="text-2xl font-[nunito] font-extrabold text-[#574F4D]">
-                            9,90
-                          </span>
-                        </div>
-
-                        <ButtonAddItem />
-
-                        <div className="w-9.5 h-9.5 flex flex-col items-center justify-center bg-purple-900 rounded-md p-2">
-                          <button>
-                            <ShoppingCart
-                              size={22}
-                              weight="fill"
-                              className="fill-white"
-                            />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="relative w-64 h-auto flex flex-col items-center justify-end bg-gray-100 rounded-tr-4xl rounded-bl-4xl px-6 pb-5 ">
-                  <div className="absolute top-[-25px]">
-                    <Coffee1 />
-                  </div>
-
-                  <div className="w-full h-30" />
-
-                  <div className="w-full flex flex-col items-center justify-center gap-7">
-                    <div className="w-full flex flex-col items-center justify-center gap-4">
-                      <div className="w-full flex flex-row flex-wrap items-center justify-center gap-1">
-                        <div className="w-min py-1 px-2 bg-yellow-100 rounded-full leading-none">
-                          <span className="w-auto text-sm font-bold text-yellow-600">
-                            especial
-                          </span>
-                        </div>
-                        <div className="w-min py-1 px-2 bg-yellow-100 rounded-full leading-none">
-                          <span className="w-auto text-sm font-bold text-yellow-600">
-                            TRADICIONAL
-                          </span>
-                        </div>
-                        <div className="w-min py-1 px-2 bg-yellow-100 rounded-full leading-none">
-                          <span className="w-auto text-sm font-bold text-yellow-600">
-                            ALCOÓLICO
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className="w-full flex flex-col items-center justify-center gap-2">
-                        <h3 className="text-xl font-[nunito] font-extrabold text-gray-900">
-                          Expresso Tradicional
-                        </h3>
-
-                        <span className="w-50 text-sm font-[nunito] text-gray-400">
-                          O tradicional café feito com água quente e grãos
-                          moídos
-                        </span>
-                      </div>
-                    </div>
-                    <div>
-                      <div className="w-auto flex flex-row items-center justify-center gap-2">
-                        <div>
-                          <span>R$</span>
-                          <span className="text-2xl font-[nunito] font-extrabold text-[#574F4D]">
-                            9,90
-                          </span>
-                        </div>
-
-                        <ButtonAddItem />
-
-                        <div className="w-9.5 h-9.5 flex flex-col items-center justify-center bg-purple-900 rounded-md p-2">
-                          <button>
-                            <ShoppingCart
-                              size={22}
-                              weight="fill"
-                              className="fill-white"
-                            />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  
+                ))} 
               </div>
             </div>
           </div>

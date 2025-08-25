@@ -1,6 +1,7 @@
 import { CurrencyDollar, MapPin, Timer } from "@phosphor-icons/react";
 import Illustration from "../../../assets/Illustration.svg?react";
 
+
 export function Success() {
   return (
     <div className="w-full h-auto flex flex-col items-center justify-start md:px-5 px-0 md:pt-8 pt-10">
