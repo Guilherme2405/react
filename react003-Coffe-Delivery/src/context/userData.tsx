@@ -1,10 +1,9 @@
 import { createContext, useState } from "react";
 
-import { type userDataContextType } from "./UserDataContextType"
 
 import { drinks } from "../app/pages/home/template"
 
-const UserDataContext = createContext<userDataContextType | null>(null)
+const UserDataContext = createContext<object | null>(null)
 
 type userDataType = {
   name: string | null;
