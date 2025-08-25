@@ -1,13 +1,14 @@
+
 import { Coffee, Package, ShoppingCart, Timer } from "@phosphor-icons/react";
 
 import { ButtonAddItem } from "../../../components/ButtonAddItem";
 
 import Imagem from "../../../assets/Imagem.svg?react";
 
-
 import { drinks } from "./template";
 
 export function Home() {
+  
   return (
     <div className="w-full h-auto flex flex-col items-center justify-start md:px-5 px-3 md:pt-8 pt-10">
       <div className="w-full max-w-[1440px] h-136 flex flex-col items-center justify-start gap-14">
@@ -84,10 +85,9 @@ export function Home() {
             </div>
 
             <div className="w-full h-full flex flex-col gap-4 pb-10">
+
               <div className="flex flex-row flex-wrap justify-center items-center gap-10">
-
                 {drinks.map((drink) => (
-
                  <div className="relative w-64 h-[372px] flex flex-col items-center justify-end bg-gray-100 rounded-tr-4xl rounded-bl-4xl px-6 pb-5" key={drink.id}>
                     <div className="absolute top-[-25px]">
                        <drink.image width={120} height={120} />
@@ -95,7 +95,7 @@ export function Home() {
 
                     <div className="w-full h-30" />
                     <div className="w-full flex flex-col items-center justify-center gap-7">
-                      <div className="w-full flex flex-row-reverse flex-wrap items-center justify-center gap-4">
+                      <div className="w-full flex flex-row flex-wrap items-center justify-center gap-4">
                         
                         {drink.tags.map((tag) => (
                           <div className="w-min py-1 px-2 bg-yellow-100 rounded-full leading-none">
@@ -127,7 +127,7 @@ export function Home() {
                         <ButtonAddItem />
 
                         <div className="w-9.5 h-9.5 flex flex-col items-center justify-center bg-purple-900 rounded-md p-2">
-                          <button>
+                          <button onClick={() => {}}>
                             <ShoppingCart
                               size={22}
                               weight="fill"
@@ -139,9 +139,9 @@ export function Home() {
                     </div>
                   </div>
                 </div>
-                  
                 ))} 
               </div>
+              
             </div>
           </div>
         </div>

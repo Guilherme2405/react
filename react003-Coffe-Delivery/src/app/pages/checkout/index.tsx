@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   Bank,
   CurrencyDollar,
@@ -5,15 +7,18 @@ import {
   PixLogo,
   CreditCard,
 } from "@phosphor-icons/react";
-import { useState } from "react";
 
-import Coffee1 from "../../../assets/Coffee-1.svg?react";
 import { ButtonAddItem } from "../../../components/ButtonAddItem";
 import { ButtonRemoveItemCart } from "../../../components/ButtonRemoveItemCart";
+
+import { drinks } from "../home/template";
+
 import { RadioCards } from "@radix-ui/themes";
 
 export function Checkout() {
   const [, setSelectedPaymentMethod] = useState<string>("credit-card");
+
+
   return (
     <div>
       <div className="w-full h-auto flex flex-col items-center justify-start md:px-5 px-0 md:pt-8 pt-10">
@@ -134,7 +139,7 @@ export function Checkout() {
                         >
                           <RadioCards.Item
                             value="credit-card"
-                              className="w-full sm:max-w-40 h-10.5 border-solid border-1 border-gray-300 rounded-md bg-gray-300 indent-2 data-[state=checked]:bg-purple-100 data-[state=checked]:border-purple-600"
+                            className="w-full sm:max-w-40 h-10.5 border-solid border-1 border-gray-300 rounded-md bg-gray-300 indent-2 data-[state=checked]:bg-purple-100 data-[state=checked]:border-purple-600"
                           >
                             <div className="w-full flex flex-row gap-2 items-center justify-center">
                               <CreditCard
@@ -185,84 +190,64 @@ export function Checkout() {
                 </div>
 
                 <div className="w-full flex flex-col gap-2 items-start justify-start bg-gray-100 rounded-md sm:p-10 p-3">
+
+
                   <div className="w-full flex flex-col gap-2 items-start justify-start">
-                    <div className="w-full flex flex-row gap-2 items-start justify-between border-b-1 border-gray-300 pb-5">
-                      <div className="w-full flex flex-row gap-2 items-center justify-between">
-                        <div>
-                          <Coffee1 width={64} height={64} />
-                        </div>
-
-                        <div className="w-full flex flex-row gap-2 items-start justify-center">
+                      <div className="w-full flex flex-row gap-2 items-start justify-between border-b-1 border-gray-300 pb-5">
+                        <div className="w-full flex flex-row gap-2 items-center justify-between">
                           <div>
-                            <h1 className="text-1xl font-[nunito] font-extrabold text-[#574F4D]">
-                              Expresso Tradicional
-                            </h1>
+                            {/*<item.image width={64} height={64} />*/}
+                          </div>
 
-                            <div className="w-full flex flex-row gap-2 items-center justify-between">
-                              <ButtonAddItem />
-                              <ButtonRemoveItemCart />
+                          <div className="w-full flex flex-row gap-2 items-start justify-center">
+                            <div>
+                              <h1 className="text-1xl font-[nunito] font-extrabold text-[#574F4D]">
+                                {/*{item.name}*/}
+                              </h1>
+
+                              <div className="w-full flex flex-row gap-2 items-center justify-between">
+                                <ButtonAddItem />
+                                <ButtonRemoveItemCart />
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="w-full flex flex-row gap-2 items-center justify-end">
-                        <span className="sm:text-1xl text-sm font-[nunito] font-extrabold text-[#574F4D]">
-                          R$ 9,90
-                        </span>
-                      </div>
-                    </div>
 
-                    <div className="w-full flex flex-row gap-2 items-start justify-between border-b-1 border-gray-300 pb-5">
-                      <div className="w-full flex flex-row gap-2 items-center justify-between">
-                        <div>
-                          <Coffee1 width={64} height={64} />
-                        </div>
-
-                        <div className="w-full flex flex-row gap-2 items-start justify-center">
-                          <div>
-                            <h1 className="text-1xl font-[nunito] font-extrabold text-[#574F4D]">
-                              Expresso Tradicional
-                            </h1>
-
-                            <div className="w-full flex flex-row gap-2 items-center justify-between">
-                              <ButtonAddItem />
-                              <ButtonRemoveItemCart />
-                            </div>
-                          </div>
+                        <div className="w-full flex flex-row gap-2 items-center justify-end">
+                          <span className="sm:text-1xl text-sm font-[nunito] font-extrabold text-[#574F4D]">
+                            R$ {/*{item.price.toFixed(2).replace(".", ",")}*/}
+                          </span>
                         </div>
                       </div>
-                      <div className="w-full flex flex-row gap-2 items-center justify-end">
-                        <span className="text-1xl font-[nunito] font-extrabold text-[#574F4D]">
-                          R$ 9,90
-                        </span>
-                      </div>
-                    </div>
+                    {/*))*/}
 
                     <div className="w-full flex flex-col gap-2 items-start justify-start">
-                      <div className="w-full flex flex-row gap-2 items-center justify-between">
-                        <span className="font-[roboto] text-sm text-[#574F4D]">
-                          Total de itens
-                        </span>
-                        <span className="font-[roboto] text-sm text-[#574F4D]">
-                          R$ 29,70
-                        </span>
-                      </div>
-                      <div className="w-full flex flex-row gap-2 items-center justify-between">
-                        <span className="font-[roboto] text-sm text-[#574F4D]">
-                          Entrega
-                        </span>
-                        <span className="font-[roboto] text-sm text-[#574F4D]">
-                          R$ 5,00
-                        </span>
-                      </div>
-                      <div className="w-full flex flex-row gap-2 items-center justify-between">
-                        <span className="font-[nunito] font-black text-sm text-[#574F4D]">
-                          Total
-                        </span>
-                        <span className="font-[nunito] font-black text-sm text-[#574F4D]">
-                          R$ 34,70
-                        </span>
-                      </div>
+                      <>
+                          <div className="w-full flex flex-row gap-2 items-center justify-between">
+                            <span className="font-[roboto] text-sm text-[#574F4D]">
+                              Total de itens
+                            </span>
+                            <span className="font-[roboto] text-sm text-[#574F4D]">
+                              R$ {/*{Number(total).toFixed(2).replace(".", ",")}*/}
+                            </span>
+                          </div>
+                          <div className="w-full flex flex-row gap-2 items-center justify-between">
+                            <span className="font-[roboto] text-sm text-[#574F4D]">
+                              Entrega
+                            </span>
+                            <span className="font-[roboto] text-sm text-[#574F4D]">
+                              R$ 5,00
+                            </span>
+                          </div>
+                          <div className="w-full flex flex-row gap-2 items-center justify-between">
+                            <span className="font-[nunito] font-black text-sm text-[#574F4D]">
+                              Total
+                            </span>
+                            <span className="font-[nunito] font-black text-sm text-[#574F4D]">
+                              R$ {/*{(Number(total) + 5.00).toFixed(2).replace(".", ",")}*/}
+                            </span>
+                          </div>
+                        </>
 
                       <div className="w-full flex flex-row gap-2 items-center justify-center">
                         <button className="w-full h-10.5 border-solid border-1 border-transparent rounded-md bg-yellow-500 hover:bg-yellow-600 py-3">
@@ -273,6 +258,7 @@ export function Checkout() {
                       </div>
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>
