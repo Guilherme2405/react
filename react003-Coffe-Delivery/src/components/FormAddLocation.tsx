@@ -1,0 +1,159 @@
+import { useState } from "react";
+
+import { RadioCards } from "@radix-ui/themes";
+
+import {
+  Bank,
+  CurrencyDollar,
+  MapPinLine,
+  PixLogo,
+  CreditCard,
+} from "@phosphor-icons/react";
+
+
+export function FormAddLocation() {
+    const [, setSelectedPaymentMethod] = useState<string>("credit-card");
+  return (
+    <div>
+      <form action="" className="w-full flex flex-col gap-2">
+        <div className="w-full max-w-160 flex flex-col gap-2 items-start sm:p-10 p-3 bg-gray-100 rounded-md">
+          <div className="w-full max-w-150 flex flex-col gap-2">
+            <div className=" flex flex-row items-end justify-start gap-2">
+              <MapPinLine size={22} className="fill-yellow-600" />
+              <span className=" font-[roboto] font-medium text-[#574F4D]">
+                Endereço de entrega
+              </span>
+            </div>
+            <div className="pl-7">
+              <span className=" font-[roboto] text-[#574F4D]">
+                Informe o endereço onde deseja receber seu pedido
+              </span>
+            </div>
+          </div>
+
+          <div className="w-full max-w-140 flex flex-col gap-2">
+            <div className="w-full flex flex-col gap-2 items-start justify-between">
+              <input
+                type="text"
+                placeholder="CEP"
+                name="cep"
+                id="cep"
+                className="w-full h-10.5 max-w-50 border-solid border-1 border-gray-300 rounded-md bg-gray-100 indent-2 
+                             focus:outline-yellow-500 focus:border-none"
+              />
+              <input
+                type="text"
+                placeholder="Rua"
+                id="rua"
+                name="rua"
+                className="w-full h-10.5 border-solid border-1 border-gray-300 rounded-md bg-gray-100 indent-2  focus:outline-yellow-500 focus:border-none"
+              />
+            </div>
+
+            <div className="w-full flex flex-row gap-2 items-center justify-between">
+              <input
+                type="text"
+                name="numero"
+                id="numero"
+                placeholder="Número"
+                className="w-full h-10.5 max-w-50 border-solid border-1 border-gray-300 rounded-md bg-gray-100 indent-2  focus:outline-yellow-500 focus:border-none"
+              />
+              <input
+                type="text"
+                name="complemento"
+                id="complemento"
+                placeholder="Complemento"
+                className="w-full h-10.5 border-solid border-1 border-gray-300 rounded-md bg-gray-100 indent-2  focus:outline-yellow-500 focus:border-none"
+              />
+            </div>
+
+            <div className="w-full flex flex-row gap-2 items-center justify-between">
+              <input
+                type="text"
+                name="bairro"
+                id="bairro"
+                placeholder="Bairro"
+                className="w-full max-w-50 h-10.5 border-solid border-1 border-gray-300 rounded-md bg-gray-100 indent-2  focus:outline-yellow-500 focus:border-none"
+              />
+              <input
+                type="text"
+                name="cidade"
+                id="cidade"
+                placeholder="Cidade"
+                className="w-full max-w-69 h-10.5 border-solid border-1 border-gray-300 rounded-md bg-gray-100 indent-2  focus:outline-yellow-500 focus:border-none"
+              />
+              <input
+                type="text"
+                name="uf"
+                id="uf"
+                placeholder="UF"
+                className="w-15 h-10.5 border-solid border-1 border-gray-300 rounded-md bg-gray-100 indent-2  focus:outline-yellow-500 focus:border-none"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="w-full max-w-160 flex flex-col gap-2 items-start sm:p-10 p-3 bg-gray-100 rounded-md">
+          <div className="w-full max-w-150 flex flex-col gap-2">
+            <div className=" flex flex-row items-end justify-start gap-2">
+              <CurrencyDollar size={22} className="fill-purple-600" />
+              <span className=" font-[roboto] font-medium text-[#574F4D]">
+                Pagamento
+              </span>
+            </div>
+
+            <div className="pl-7">
+              <span className=" font-[roboto] text-[#574F4D]">
+                O pagamento é feito na entrega. Escolha a forma que deseja pagar
+              </span>
+            </div>
+
+            <RadioCards.Root
+              color="purple"
+              defaultValue="credit-card"
+              columns={{ initial: "1", sm: "3" }}
+              className="w-full flex flex-row flex-wrap gap-2"
+              onValueChange={setSelectedPaymentMethod}
+            >
+              <RadioCards.Item
+                value="credit-card"
+                className="w-full sm:max-w-40 h-10.5 border-solid border-1 border-gray-300 rounded-md bg-gray-300 indent-2 data-[state=checked]:bg-purple-100 data-[state=checked]:border-purple-600"
+              >
+                <div className="w-full flex flex-row gap-2 items-center justify-center">
+                  <CreditCard size={22} className="fill-purple-600" />
+                  <span className="font-[roboto] text-sm text-[#574F4D]">
+                    CARTÃO DE CRÉDITO
+                  </span>
+                </div>
+              </RadioCards.Item>
+
+              <RadioCards.Item
+                value="debit-card"
+                className="w-full sm:max-w-40 h-10.5 border-solid border-1 border-gray-300 rounded-md bg-gray-300 indent-2 data-[state=checked]:bg-purple-100 data-[state=checked]:border-purple-600"
+              >
+                <div className="w-full flex flex-row gap-2 items-center justify-center">
+                  <Bank size={22} className="fill-purple-600" />
+                  <span className="font-[roboto] text-sm text-[#574F4D]">
+                    CARTÃO DE DÉBITO
+                  </span>
+                </div>
+              </RadioCards.Item>
+
+              <RadioCards.Item
+                value="pix"
+                className="w-full sm:max-w-40 h-10.5 border-solid border-1 border-gray-300 rounded-md bg-gray-300 indent-2 data-[state=checked]:bg-purple-100 data-[state=checked]:border-purple-600"
+              >
+                <div className="w-full flex flex-row gap-2 items-center justify-center">
+                  <PixLogo size={22} className="fill-purple-600" />
+                  <span className="font-[roboto] text-sm text-[#574F4D]">
+                    PIX
+                  </span>
+                </div>
+              </RadioCards.Item>
+            </RadioCards.Root>
+          </div>
+        </div>
+      </form>
+    </div>
+  );
+}

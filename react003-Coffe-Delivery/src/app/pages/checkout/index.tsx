@@ -1,4 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+
+import { UserDataContext } from "../../../context/userData";
+import { type UserDataContextType } from "../../../context/UserDataContextType";
+
+import { drinks } from "../home/template";
 
 import {
   Bank,
@@ -11,13 +16,16 @@ import {
 import { ButtonAddItem } from "../../../components/ButtonAddItem";
 import { ButtonRemoveItemCart } from "../../../components/ButtonRemoveItemCart";
 
-import { drinks } from "../home/template";
-
 import { RadioCards } from "@radix-ui/themes";
 
 export function Checkout() {
   const [, setSelectedPaymentMethod] = useState<string>("credit-card");
+  const { useUserCart } = useContext(UserDataContext) as UserDataContextType;
 
+  const total = useUserCart.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
 
   return (
     <div>
@@ -25,7 +33,7 @@ export function Checkout() {
         <div className="w-full max-w-[1440px] h-136 flex flex-col items-center justify-start gap-14">
           <div className="w-full flex flex-row gap-16 sm:px-5 px-3 pb-10">
             <div className="w-full flex flex-row gap-4 flex-wrap items-start justify-between">
-              <div>
+              <div className="w-full md:max-w-160 max-w-full">
                 <div>
                   <h1 className="text-2xl font-[nunito] font-extrabold text-[#574F4D]">
                     Complete seu pedido
@@ -34,7 +42,7 @@ export function Checkout() {
 
                 <div>
                   <form action="" className="w-full flex flex-col gap-2">
-                    <div className="w-full max-w-160 flex flex-col gap-2 items-start sm:p-10 p-3 bg-gray-100 rounded-md">
+                    <div className="w-full md:max-w-160 max-w-full flex flex-col gap-2 items-start sm:p-10 p-3 bg-gray-100 rounded-md">
                       <div className="w-full max-w-150 flex flex-col gap-2">
                         <div className=" flex flex-row items-end justify-start gap-2">
                           <MapPinLine size={22} className="fill-yellow-600" />
@@ -111,7 +119,7 @@ export function Checkout() {
                       </div>
                     </div>
 
-                    <div className="w-full max-w-160 flex flex-col gap-2 items-start sm:p-10 p-3 bg-gray-100 rounded-md">
+                    <div className="w-full md:max-w-160 max-w-full flex flex-col gap-2 items-start sm:p-10 p-3 bg-gray-100 rounded-md">
                       <div className="w-full max-w-150 flex flex-col gap-2">
                         <div className=" flex flex-row items-end justify-start gap-2">
                           <CurrencyDollar
@@ -182,83 +190,90 @@ export function Checkout() {
                 </div>
               </div>
 
-              <div className="w-full max-w-112 flex flex-col gap-2 items-start justify-start">
+              <div className="w-full md:max-w-112 flex flex-col gap-2 items-start justify-start">
                 <div>
                   <h1 className="text-2xl font-[nunito] font-extrabold text-[#574F4D]">
                     Cafés selecionados
                   </h1>
                 </div>
 
-                <div className="w-full flex flex-col gap-2 items-start justify-start bg-gray-100 rounded-md sm:p-10 p-3">
-
-
+                <div className="w-full flex flex-col gap-2 items-start justify-start bg-gray-100 rounded-md sm:p-8 p-3">
                   <div className="w-full flex flex-col gap-2 items-start justify-start">
-                      <div className="w-full flex flex-row gap-2 items-start justify-between border-b-1 border-gray-300 pb-5">
-                        <div className="w-full flex flex-row gap-2 items-center justify-between">
-                          <div>
-                            {/*<item.image width={64} height={64} />*/}
-                          </div>
+                    {useUserCart.map((item, index) => {
+                      const matchedDrink = drinks.find(
+                        (drink) => drink.id === item.id
+                      );
 
-                          <div className="w-full flex flex-row gap-2 items-start justify-center">
-                            <div>
-                              <h1 className="text-1xl font-[nunito] font-extrabold text-[#574F4D]">
-                                {/*{item.name}*/}
-                              </h1>
-
-                              <div className="w-full flex flex-row gap-2 items-center justify-between">
-                                <ButtonAddItem />
-                                <ButtonRemoveItemCart />
+                      return (
+                        <div className="w-full flex flex-row gap-2 items-start justify-between" key={index}>
+                          <div className="w-full flex flex-row gap-2 items-start justify-between border-b-1 border-gray-300 pb-5">
+                            <div className="w-full flex flex-row gap-2 items-center justify-center">
+                              <div>
+                                {matchedDrink && (
+                                  <matchedDrink.image width={64} height={64} />
+                                )}
                               </div>
+
+                              <div className="w-full flex flex-row gap-2 items-start justify-center">
+                                <div className="w-full flex flex-col gap-2 items-start justify-start">
+                                  <h1 className="text-1xl font-[nunito] font-extrabold text-[#574F4D]">
+                                    {item.name}
+                                  </h1>
+
+                                  <div className="w-full flex flex-row min-w-[120px] gap-2 items-center justify-between">
+                                    <ButtonAddItem drink={item} />
+                                    <ButtonRemoveItemCart drink={item} />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="w-full flex flex-row gap-2 items-center justify-end">
+                              <span className="sm:text-1xl text-sm font-[nunito] font-black text-[#574F4D]">
+                                R$ {(item.price * item.quantity).toFixed(2).replace(".", ",")}
+                              </span>
                             </div>
                           </div>
                         </div>
-
-                        <div className="w-full flex flex-row gap-2 items-center justify-end">
-                          <span className="sm:text-1xl text-sm font-[nunito] font-extrabold text-[#574F4D]">
-                            R$ {/*{item.price.toFixed(2).replace(".", ",")}*/}
-                          </span>
-                        </div>
-                      </div>
-                    {/*))*/}
+                      );
+                    })}
 
                     <div className="w-full flex flex-col gap-2 items-start justify-start">
-                      <>
-                          <div className="w-full flex flex-row gap-2 items-center justify-between">
-                            <span className="font-[roboto] text-sm text-[#574F4D]">
-                              Total de itens
-                            </span>
-                            <span className="font-[roboto] text-sm text-[#574F4D]">
-                              R$ {/*{Number(total).toFixed(2).replace(".", ",")}*/}
-                            </span>
-                          </div>
-                          <div className="w-full flex flex-row gap-2 items-center justify-between">
-                            <span className="font-[roboto] text-sm text-[#574F4D]">
-                              Entrega
-                            </span>
-                            <span className="font-[roboto] text-sm text-[#574F4D]">
-                              R$ 5,00
-                            </span>
-                          </div>
-                          <div className="w-full flex flex-row gap-2 items-center justify-between">
-                            <span className="font-[nunito] font-black text-sm text-[#574F4D]">
-                              Total
-                            </span>
-                            <span className="font-[nunito] font-black text-sm text-[#574F4D]">
-                              R$ {/*{(Number(total) + 5.00).toFixed(2).replace(".", ",")}*/}
-                            </span>
-                          </div>
-                        </>
-
-                      <div className="w-full flex flex-row gap-2 items-center justify-center">
-                        <button className="w-full h-10.5 border-solid border-1 border-transparent rounded-md bg-yellow-500 hover:bg-yellow-600 py-3">
-                          <span className="font-[roboto] font-bold text-white">
-                            CONFIRMAR PEDIDO
-                          </span>
-                        </button>
+                      <div className="w-full flex flex-row gap-2 items-center justify-between">
+                        <span className="font-[roboto] text-sm text-[#574F4D]">
+                          Total de itens
+                        </span>
+                        <span className="font-[roboto] text-sm text-[#574F4D]">
+                          R$ {Number(total).toFixed(2).replace(".", ",")}
+                        </span>
+                      </div>
+                      <div className="w-full flex flex-row gap-2 items-center justify-between">
+                        <span className="font-[roboto] text-sm text-[#574F4D]">
+                          Entrega
+                        </span>
+                        <span className="font-[roboto] text-sm text-[#574F4D]">
+                          R$ 5,00
+                        </span>
+                      </div>
+                      <div className="w-full flex flex-row gap-2 items-center justify-between">
+                        <span className="font-[nunito] font-black text-sm text-[#574F4D]">
+                          Total
+                        </span>
+                        <span className="font-[nunito] font-black text-sm text-[#574F4D]">
+                          R${" "}
+                          {(Number(total) + 5.0).toFixed(2).replace(".", ",")}
+                        </span>
                       </div>
                     </div>
-                  </div>
 
+                    <div className="w-full flex flex-row gap-2 items-center justify-center">
+                      <button className="w-full h-10.5 border-solid border-1 border-transparent rounded-md bg-yellow-500 hover:bg-yellow-600 py-3">
+                        <span className="font-[roboto] font-bold text-white">
+                          CONFIRMAR PEDIDO
+                        </span>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

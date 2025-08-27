@@ -1,63 +1,43 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
+import { type UserDataContextType } from "./UserDataContextType";
 
-import { drinks } from "../app/pages/home/template"
+const UserDataContext = createContext<UserDataContextType | null>(null);
 
-const UserDataContext = createContext<object | null>(null)
+export const UserDataProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const savedUserData = localStorage.getItem("useUserData");
+  const savedUserCart = localStorage.getItem("useUserCart");
 
-type userDataType = {
-  name: string | null;
-  email: string | null;
-  phone: string | null;
-  address: string | null;
-} | null;
+  const [useUserData, setUserData] = useState(
+    savedUserData ? JSON.parse(savedUserData) : null
+  );
+  const [useUserCart, setUserCart] = useState(
+    savedUserCart ? JSON.parse(savedUserCart) : []
+  );
 
-type userCartType = {
-  id: number | null;
-  name: string | null;
-  description: string | null;
-  tags: string[] | null;
-  price: number | null;
-  image: React.FunctionComponent<React.SVGProps<SVGSVGElement>> | null;
-} | [];
-
-export const UserDataProvider = ({ children }: { children: React.ReactNode }) => {
-
-  const users = {
-    id: 1,
-    name: "John Doe",
-    email: "john.doe@example.com",
-    phone: "1234567890",
-    address: "123 Main St, Anytown, USA"
-  }
-
-
-  const cart = [{
-    id: 0,
-    name: drinks[0].name,
-    description: drinks[0].description,
-    tags: drinks[0].tags,
-    price: drinks[0].price,
-    image: drinks[0].image
-  }, {
-    id: 1,
-    name: drinks[1].name,
-    description: drinks[1].description,
-    tags: drinks[1].tags,
-    price: drinks[1].price,
-    image: drinks[1].image
-  },
-  ]
-
-  const [userData, setUserData] = useState<userDataType>(users as userDataType)
-  const [userCart, setUserCart] = useState<userCartType>(cart as userCartType)
-
+  useEffect(() => {
+    localStorage.setItem("useUserData", JSON.stringify(useUserData));
+    localStorage.setItem("useUserCart", JSON.stringify(useUserCart));
+  }, [useUserData, useUserCart]);
 
   return (
-    <UserDataContext.Provider value={{ userData, userCart }}>
+    <UserDataContext.Provider
+      value={
+        {
+          useUserData,
+          useUserCart,
+          setUserData,
+          setUserCart,
+        } as UserDataContextType
+      }
+    >
       {children}
     </UserDataContext.Provider>
-  )
-}
+  );
+};
 
-export { UserDataContext }
+export { UserDataContext };
