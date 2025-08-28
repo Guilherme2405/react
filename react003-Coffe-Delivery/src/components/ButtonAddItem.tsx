@@ -39,11 +39,11 @@ export function ButtonAddItem({ drink }: { drink: drinkType }) {
   }
 
   function handleAddItemCartsQuantity(): void {
-    const compareItem = useUserCart.find((item) => item.id === drink.id);
+    const compareItem = useUserCart?.find((item) => item.id === drink.id);
     if (compareItem) {
       console.log(compareItem);
       setUserCart((prev: userCartType) => {
-        return prev.map((item: CartItem) =>
+        return prev?.map((item: CartItem) =>
           item.id === compareItem.id
             ? { ...item, quantity: item.quantity + addToCart }
             : item
@@ -51,7 +51,7 @@ export function ButtonAddItem({ drink }: { drink: drinkType }) {
       });
     } else {
       setUserCart((prev: userCartType) => [
-        ...prev,
+        ...(prev || []),
         { ...drink, quantity: addToCart },
       ]);
     }
@@ -60,7 +60,7 @@ export function ButtonAddItem({ drink }: { drink: drinkType }) {
   return (
     <div className="flex items-center justify-center gap-2">
       <div className="w-18 h-10 flex flex-row items-center justify-center gap-2 bg-gray-300 rounded-md p-2">
-        <button onClick={addToCartFunctionMinus}>
+        <button onClick={addToCartFunctionMinus} type="button">
           <Minus
             size={14}
             className="fill-purple-600  hover:fill-purple-900 transition-all duration-300"
@@ -69,7 +69,7 @@ export function ButtonAddItem({ drink }: { drink: drinkType }) {
         <div>
           <span>{addToCart}</span>
         </div>
-        <button onClick={addToCartFunctionPlus}>
+        <button onClick={addToCartFunctionPlus} type="button">
           <Plus
             size={14}
             className="fill-purple-600  hover:fill-purple-900 transition-all duration-300"

@@ -39,7 +39,7 @@ export function Header() {
                 {useUserData ? `${useUserData.city}, ${useUserData.state}` : "Sua localização"}
               </span>
             </div>
-            {useUserCart?.length === 0 ? (
+            {(!useUserCart || useUserCart.length <= 0) ? (
               <Link to="/checkout">
                 <div className="w-10 h-10 flex flex-row justify-center items-center gap-1 bg-yellow-100 rounded-md p-2">
                   <ShoppingCart

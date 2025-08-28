@@ -263,7 +263,7 @@ export function Checkout() {
                   <div className="w-full flex flex-col gap-2 items-start justify-start bg-gray-100 rounded-md sm:p-8 p-3">
                     <div className="w-full flex flex-col gap-2 items-start justify-start">
                       {useUserCart !== null &&
-                        useUserCart.map((item, index) => {
+                        useUserCart?.map((item, index) => {
                           const matchedDrink = drinks.find(
                             (drink) => drink.id === item.id
                           );
