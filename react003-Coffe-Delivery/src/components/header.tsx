@@ -18,7 +18,7 @@ export function Header() {
     useUserData: userDataType;
   };
 
-  const fullQuantity = useUserCart.reduce(
+  const fullQuantity = useUserCart?.reduce(
     (acc, item) => acc + item.quantity,
     0
   );
@@ -28,16 +28,18 @@ export function Header() {
       <header className="w-full h-26 flex flex-row items-center justify-center">
         <div className="w-full max-w-[1440px] flex flex-row flex-wrap justify-between items-center md:px-5 px-3">
           <div>
-            <Logo width={84} height={40} />
+            <Link to="/">
+              <Logo width={84} height={40} />
+            </Link>
           </div>
           <div className="flex flex-row items-center gap-3">
-            <div className="md:w-40 w-auto h-10 flex flex-row justify-between items-center gap-1 bg-purple-100 rounded-md p-2">
+            <div className=" w-auto h-10 flex flex-row justify-between items-center gap-1 bg-purple-100 rounded-md p-2">
               <MapPin size={22} weight="fill" fill="#8047F8" />
               <span className="text-sm text-purple-500 hidden md:inline-block">
-                {useUserData ? useUserData.address : "Sua localização"}
+                {useUserData ? `${useUserData.city}, ${useUserData.state}` : "Sua localização"}
               </span>
             </div>
-            {useUserCart.length === 0 ? (
+            {useUserCart?.length === 0 ? (
               <Link to="/checkout">
                 <div className="w-10 h-10 flex flex-row justify-center items-center gap-1 bg-yellow-100 rounded-md p-2">
                   <ShoppingCart

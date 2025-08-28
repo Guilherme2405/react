@@ -1,8 +1,16 @@
+import { useContext } from "react";
+
 import { CurrencyDollar, MapPin, Timer } from "@phosphor-icons/react";
 import Illustration from "../../../assets/Illustration.svg?react";
-
+import { UserDataContext } from "../../../context/userData";
+import { type UserDataContextType } from "../../../context/UserDataContextType";
 
 export function Success() {
+
+  const { useUserData } = useContext(
+    UserDataContext
+  ) as UserDataContextType;
+
   return (
     <div className="w-full h-auto flex flex-col items-center justify-start md:px-5 px-0 md:pt-8 pt-10">
       <div className="w-full max-w-[1440px] h-136 flex flex-col items-center justify-start gap-14">
@@ -39,8 +47,8 @@ export function Success() {
                         </div>{" "}
                         <span className="font-[roboto] text-sm text-[#574F4D]">
                           Entrega em{" "}
-                          <strong>Rua João Daniel Martinelli, 102</strong>{" "}
-                          <br /> Farrapos - RS
+                          <strong>{useUserData?.city}</strong>{" "}
+                          <br /> {useUserData?.neighborhood} - {`${useUserData?.city}, ${useUserData?.state}`}
                         </span>
                       </div>
                       <div className="w-full flex flex-row gap-2 items-center justify-start">
@@ -68,7 +76,7 @@ export function Success() {
                         <span className="font-[roboto] text-sm text-[#574F4D]">
                           Pagamento na entrega
                           <br />
-                          <strong>Cartão de Crédito</strong>
+                          <strong>{useUserData?.paymentMethod}</strong>
                         </span>
                       </div>
                     </div>

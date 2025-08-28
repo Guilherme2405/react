@@ -19,7 +19,7 @@ export interface CartItem {
 }
 
 export type userDataType = UserData | null;
-export type userCartType = CartItem[];
+export type userCartType = CartItem[] | null;
 
 // Tipo do contexto
 export interface UserDataContextType {
