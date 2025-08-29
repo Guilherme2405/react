@@ -1,7 +1,7 @@
 <h1 align="center">Repositório de Estudos | React + TypeScript + Git</h1>
 
 <p align="center">
-  🚀 Projetos, anotações e exercícios das aulas com foco em <strong>desenvolvimento front-end moderno</strong> utilizando <code>React</code>, <code>TypeScript</code> e <code>Git</code> para versionamento via <code>Git Bash</code>.
+  🚀 Projetos, anotações e exercícios das aulas com foco em <strong>desenvolvimento front-end moderno</strong> utilizando <code>React</code>, <code>TypeScript</code> e <code>Git</code> para versionamento via <code>Git Bash.</code>
 </p>
 
 ---
